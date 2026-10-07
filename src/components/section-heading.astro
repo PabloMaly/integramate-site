@@ -1,0 +1,21 @@
+---
+import Eyebrow from '@/components/eyebrow.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  icon?: 'sparkle' | 'coin';
+  wide?: boolean;
+}
+
+const { eyebrow, title, subtitle, icon = 'sparkle', wide = false } = Astro.props;
+---
+
+<div class:list={['mx-auto flex flex-col items-center text-center', wide ? 'max-w-[1120px]' : 'max-w-[720px]']}>
+  <Eyebrow icon={icon}>{eyebrow}</Eyebrow>
+  <h2 class="mt-6 text-balance text-[34px] font-medium leading-[1.08] tracking-[-0.035em] md:text-[52px] lg:text-[58px]">
+    {title}
+  </h2>
+  <p class="mt-5 max-w-[640px] text-balance text-[16px] text-fg-secondary md:text-[18px]">{subtitle}</p>
+</div>

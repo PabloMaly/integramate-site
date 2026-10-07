@@ -1,0 +1,78 @@
+---
+import { useTranslations, type Locale } from '@/i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const t = useTranslations(Astro.props.locale).mockup;
+const bars = [38, 62, 44, 71, 52, 84, 58, 66, 90, 48, 74, 80];
+---
+
+<div
+  class="mx-auto w-full max-w-[1100px] overflow-hidden rounded-t-[28px] border border-b-0 border-border bg-surface-muted shadow-pop [mask-image:linear-gradient(to_bottom,black_65%,transparent)]"
+  aria-hidden="true"
+>
+  <div class="flex items-center gap-2 border-b border-border bg-surface px-5 py-4">
+    <span class="size-3 rounded-full bg-danger-700"></span>
+    <span class="size-3 rounded-full bg-primary-400"></span>
+    <span class="size-3 rounded-full bg-success-700"></span>
+    <span class="mx-auto rounded-md bg-surface-muted px-16 py-1 text-[12px] text-fg-tertiary">app.integramate.com</span>
+  </div>
+  <div class="p-5 md:p-6">
+    <div class="flex flex-wrap items-center gap-2">
+      {
+        t.tabs.map((tab, i) => (
+          <span
+            class:list={[
+              'rounded-full px-4 py-2 text-[13px]',
+              i === 0 ? 'bg-primary-100 font-medium text-primary-700' : 'text-fg-secondary',
+            ]}
+          >
+            {tab}
+          </span>
+        ))
+      }
+    </div>
+    <h2 class="mt-6 text-[22px] font-medium">{t.title}</h2>
+    <p class="mt-1 text-[13px] text-fg-secondary">{t.subtitle}</p>
+    <div class="mt-5 grid gap-4 md:grid-cols-3">
+      <div class="rounded-2xl bg-surface p-5">
+        <p class="text-[13px] text-fg-secondary">{t.conversations}</p>
+        <p class="mt-3 flex items-center gap-2 text-[30px] font-medium">
+          {t.valueConversations}
+          <span class="rounded-full bg-success-50 px-2 py-0.5 text-[12px] text-success-700">+18%</span>
+        </p>
+      </div>
+      <div class="rounded-2xl bg-surface p-5">
+        <p class="text-[13px] text-fg-secondary">{t.resolved}</p>
+        <p class="mt-3 flex items-center gap-2 text-[30px] font-medium">
+          {t.valueResolved}
+          <span class="rounded-full bg-success-50 px-2 py-0.5 text-[12px] text-success-700">+6%</span>
+        </p>
+      </div>
+      <div class="rounded-2xl bg-surface p-5">
+        <p class="text-[13px] text-fg-secondary">{t.hours}</p>
+        <p class="mt-3 flex items-center gap-2 text-[30px] font-medium">
+          312
+          <span class="rounded-full bg-danger-50 px-2 py-0.5 text-[12px] text-danger-700">-2%</span>
+        </p>
+      </div>
+    </div>
+    <div class="mt-4 rounded-2xl bg-surface p-5">
+      <p class="text-[14px] font-medium">{t.chart}</p>
+      <div class="mt-4 flex h-40 items-end gap-2 md:gap-3">
+        {
+          bars.map((h) => (
+            <div class="flex flex-1 items-end rounded-md bg-surface-muted" style={`height:100%`}>
+              <div class="w-full rounded-md bg-primary-400" style={`height:${h}%`} />
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-2 flex justify-between text-[11px] text-fg-tertiary">
+        {t.months.map((m) => <span>{m}</span>)}
+      </div>
+    </div>
+  </div>
+</div>

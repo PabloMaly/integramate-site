@@ -1,0 +1,79 @@
+---
+import { localeUrl, useTranslations, type Locale } from '@/i18n';
+
+const LOCALES = ['en', 'es'] as const;
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const home = localeUrl(locale);
+
+const links = [
+  { href: `${home}#features`, label: t.nav.features },
+  { href: `${home}#pricing`, label: t.nav.pricing },
+  { href: `${home}#faq`, label: t.nav.faq },
+  { href: `${home}#contact`, label: t.nav.contact },
+];
+---
+
+<header class="mx-auto flex h-20 max-w-[1200px] items-center justify-between gap-2 px-4 md:px-6">
+  <a href={home} class="flex shrink-0 items-center gap-2 text-[18px] font-medium text-primary-500 md:text-[24px]">
+    <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="8" fill="currentColor"></rect>
+      <path d="M9 22V10h3v12zm5 0V10h3l6 8.5V10h3v12h-3l-6-8.5V22z" fill="#fff"></path>
+    </svg>
+    <span class="max-[430px]:sr-only">Integramate</span>
+  </a>
+  <nav aria-label={t.nav.label} class="hidden items-center gap-8 md:flex">
+    {
+      links.map((link) => (
+        <a href={link.href} class="text-[15px] text-fg-secondary transition-colors hover:text-fg">
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+  <div class="flex items-center gap-2">
+    <details class="md:hidden">
+      <summary
+        aria-label={t.nav.menu}
+        class="flex size-10 cursor-pointer list-none items-center justify-center rounded-full border border-border [&::-webkit-details-marker]:hidden"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+      </summary>
+      <nav aria-label={t.nav.label} class="fixed inset-x-4 top-[76px] z-20 flex flex-col rounded-2xl border border-border bg-surface p-2 shadow-pop">
+        {links.map((link) => <a href={link.href} class="rounded-xl px-4 py-3 text-[15px] hover:bg-surface-muted">{link.label}</a>)}
+      </nav>
+    </details>
+    <div role="group" aria-label={t.nav.language} class="flex items-center rounded-full border border-border p-0.5 text-[13px]">
+      {
+        LOCALES.map((l) => (
+          <a
+            href={localeUrl(l)}
+            hreflang={l}
+            lang={l}
+            data-lang={l}
+            aria-current={l === locale ? 'true' : undefined}
+            class:list={[
+              'rounded-full px-3 py-1.5 uppercase',
+              l === locale ? 'bg-fg text-white' : 'text-fg-secondary hover:text-fg',
+            ]}
+          >
+            {l}
+          </a>
+        ))
+      }
+    </div>
+    <a href="https://app.integramate.com/login" class="hidden rounded-full px-5 py-3 text-[15px] text-fg lg:block">
+      {t.nav.login}
+    </a>
+    <a href={`${home}#contact`} class="whitespace-nowrap rounded-full bg-fg px-4 py-2.5 text-[14px] font-medium text-white md:px-5 md:py-3 md:text-[15px]">
+      {t.nav.getStarted}
+    </a>
+  </div>
+</header>

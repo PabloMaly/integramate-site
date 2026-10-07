@@ -1,0 +1,278 @@
+---
+import Base from '@/layouts/base.astro';
+import SiteHeader from '@/components/site-header.astro';
+import DashboardMockup from '@/components/dashboard-mockup.astro';
+import SectionHeading from '@/components/section-heading.astro';
+import Eyebrow from '@/components/eyebrow.astro';
+import AppShowcase from '@/components/app-showcase.astro';
+import FeatureVisual from '@/components/feature-visual.astro';
+import { localeUrl, useTranslations, type Locale } from '@/i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const home = localeUrl(locale);
+const href = (target: string) => (target.startsWith('#') ? `${home}${target}` : localeUrl(locale, target));
+
+const icons: Record<string, string> = {
+  chart: 'M4 20V10m6 10V4m6 16v-7m6 7H2',
+  clock: 'M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z',
+  heart: 'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z',
+};
+---
+
+<Base title={t.meta.title} description={t.meta.description} locale={locale}>
+  <div class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute -right-24 top-[280px] h-[420px] w-[34%] rounded-l-[80px] bg-gradient-to-l from-primary-500 to-transparent opacity-80 blur-[60px]"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -right-40 -top-20 size-[420px] rounded-full bg-primary-400 opacity-40 blur-[110px]"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -left-24 top-[640px] h-[360px] w-[18%] bg-gradient-to-r from-primary-400 to-transparent opacity-70 blur-[60px]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <SiteHeader locale={locale} />
+
+    <main class="relative">
+      <section class="mx-auto flex max-w-[1200px] flex-col items-center px-6 pb-16 pt-16 text-center md:pt-24">
+        <p class="inline-flex items-center gap-2 rounded-xl bg-primary-700 px-4 py-2 text-[14px] text-white shadow-pop">
+          <span aria-hidden="true">✦</span>
+          {t.hero.badge}
+        </p>
+        <h1 class="mt-8 text-[44px] font-medium leading-[1.05] tracking-[-0.04em] min-[1200px]:text-[76px] md:text-[64px]">
+          {t.hero.titleLine1}
+          <em class="block">{t.hero.titleLine2}</em>
+        </h1>
+        <p class="mt-8 max-w-[760px] text-[17px] leading-relaxed text-fg-secondary md:text-[19px]">{t.hero.text}</p>
+        <form id="contact" class="mt-10 flex w-full max-w-[560px] items-center gap-2 rounded-full border border-border bg-surface p-1.5 shadow-pop">
+          <label for="email" class="sr-only">{t.hero.emailLabel}</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder={t.hero.emailPlaceholder}
+            class="min-w-0 flex-1 bg-transparent px-4 py-3 text-[15px] outline-none placeholder:text-fg-secondary md:px-5 md:text-[16px]"
+          />
+          <button type="submit" class="shrink-0 whitespace-nowrap rounded-full bg-fg px-5 py-3 text-[15px] font-medium text-white md:px-6 md:text-[16px]">
+            {t.hero.submit}
+          </button>
+        </form>
+        <p class="mt-4 text-[13px] text-fg-secondary">{t.hero.note}</p>
+      </section>
+
+      <section class="px-4 md:px-6">
+        <DashboardMockup locale={locale} />
+      </section>
+    </main>
+  </div>
+
+  <section id="features" class="mx-auto max-w-[1200px] scroll-mt-8 px-6 py-24">
+    <SectionHeading eyebrow={t.features.eyebrow} title={t.features.title} subtitle={t.features.subtitle} />
+    <div class="mt-14 grid gap-6 md:grid-cols-2">
+      {
+        t.features.items.map((f, i) => (
+          <article class:list={['rounded-[28px] p-4', i === 0 ? 'bg-gradient-to-b from-primary-400 to-primary-100' : 'bg-surface-muted']}>
+            <FeatureVisual locale={locale} variant={f.visual} />
+            <h3 class="mt-5 px-3 text-[18px] font-medium">{f.title}</h3>
+            <p class="mb-2 mt-2 px-3 text-[15px] leading-relaxed text-fg-secondary">{f.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="pricing" class="scroll-mt-8 bg-surface-muted py-24">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <SectionHeading eyebrow={t.pricing.eyebrow} title={t.pricing.title} subtitle={t.pricing.subtitle} icon="coin" wide />
+      <div class="mt-14 grid gap-5 md:grid-cols-3 md:grid-rows-[auto_auto] md:gap-4 lg:gap-6">
+        {
+          t.pricing.plans.map((plan) => (
+            <article
+              class:list={[
+                'grid gap-0 rounded-[28px] border p-2.5 md:row-span-2 md:grid-rows-subgrid',
+                plan.featured
+                  ? 'border-primary-600 bg-gradient-to-b from-primary-600 to-primary-700 shadow-[0_16px_40px_-12px_rgba(181,80,31,0.45)]'
+                  : 'border-border bg-surface',
+              ]}
+            >
+              <div
+                class:list={[
+                  'relative flex flex-col overflow-hidden rounded-[20px] p-5 lg:p-6',
+                  plan.featured ? 'bg-surface shadow-[0_2px_10px_rgba(10,10,10,0.08)]' : 'bg-surface-muted',
+                ]}
+              >
+                {plan.featured && (
+                  <div
+                    class="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(circle_at_90%_0%,black,transparent_70%)]"
+                    aria-hidden="true"
+                  />
+                )}
+                <h3 class="relative text-[24px] font-medium tracking-[-0.025em] lg:text-[28px]">{plan.name}</h3>
+                <p class="relative mt-3 flex-1 text-[15px] leading-relaxed text-fg-secondary lg:text-[16px]">{plan.description}</p>
+                <p class="relative mt-6 text-[40px] font-medium leading-none tracking-[-0.035em] lg:text-[46px]">{plan.price}</p>
+                <a
+                  href={href('#contact')}
+                  class:list={[
+                    'relative mt-6 block rounded-xl py-4 text-center text-[16px] font-medium text-white lg:text-[17px]',
+                    plan.featured
+                      ? 'bg-gradient-to-b from-primary-600 to-primary-700 shadow-[0_10px_24px_-6px_rgba(181,80,31,0.6),inset_0_1px_0_rgba(255,255,255,0.35)]'
+                      : 'bg-fg shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]',
+                  ]}
+                >
+                  {plan.cta}
+                </a>
+              </div>
+              <div class:list={['px-4 pb-6 pt-9 lg:px-5 lg:pt-11', plan.featured && 'text-white']}>
+                <p class:list={['text-[16px] lg:text-[18px]', plan.featured ? 'text-white/90' : 'text-fg-secondary']}>
+                  {t.pricing.includes}
+                </p>
+                <ul class="mt-6 flex flex-col gap-4 text-[16px] lg:gap-5 lg:text-[17px]">
+                  {plan.features.map((feature) => (
+                    <li class="flex items-start gap-3.5">
+                      <svg class="mt-px shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="m4.5 12.5 4.75 4.75L19.5 7" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1200px] px-6 py-24">
+    <SectionHeading eyebrow={t.benefits.eyebrow} title={t.benefits.title} subtitle={t.benefits.subtitle} />
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {
+        t.benefits.items.map((b) => (
+          <article class="rounded-[28px] border border-border bg-surface p-7">
+            <span class="flex size-11 items-center justify-center rounded-xl bg-primary-700 text-white">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d={icons[b.icon]} stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <h3 class="mt-6 text-[18px] font-medium">{b.title}</h3>
+            <p class="mt-2 text-[15px] leading-relaxed text-fg-secondary">{b.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1200px] px-6 py-24">
+    <SectionHeading eyebrow={t.channels.eyebrow} title={t.channels.title} subtitle={t.channels.subtitle} />
+    <ul class="mt-12 flex flex-wrap justify-center gap-4">
+      {
+        t.channels.items.map((c) => (
+          <li class="flex items-center gap-3 rounded-2xl border border-border bg-surface px-6 py-4">
+            <span class="flex size-10 items-center justify-center rounded-xl bg-primary-100 text-[15px] font-medium text-primary-700">
+              {c.name[0]}
+            </span>
+            <span class="text-[16px] font-medium">{c.name}</span>
+            <span
+              class:list={[
+                'rounded-full px-2.5 py-1 text-[12px]',
+                c.live ? 'bg-success-50 text-success-700' : 'bg-surface-muted text-fg-secondary',
+              ]}
+            >
+              {c.live ? t.channels.live : t.channels.soon}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <AppShowcase locale={locale} />
+
+  <section id="faq" class="mx-auto max-w-[1200px] scroll-mt-8 px-6 py-24">
+    <div class="grid gap-12 md:grid-cols-[1fr_1.4fr]">
+      <div>
+        <Eyebrow>{t.faq.eyebrow}</Eyebrow>
+        <h2 class="mt-6 text-balance text-[34px] font-medium leading-[1.08] tracking-[-0.035em] md:text-[48px]">{t.faq.title}</h2>
+        <p class="mt-5 text-[16px] text-fg-secondary">{t.faq.subtitle}</p>
+      </div>
+      <div class="divide-y divide-border border-y border-border">
+        {
+          t.faq.items.map((item) => (
+            <details class="group py-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-medium [&::-webkit-details-marker]:hidden">
+                {item.q}
+                <svg class="shrink-0 transition-transform group-open:rotate-180" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <p class="mt-3 max-w-[560px] text-[15px] leading-relaxed text-fg-secondary">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1200px] px-6 pb-24">
+    <div class="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-primary-50 to-primary-300 px-8 py-16 md:px-16 lg:py-24">
+      <div class="relative max-w-[480px] xl:max-w-[600px]">
+        <h2 class="text-[34px] font-medium leading-[1.1] tracking-[-0.03em] md:text-[48px]">{t.cta.title}</h2>
+        <p class="mt-4 text-[16px] text-fg">{t.cta.text}</p>
+        <a href={href('#contact')} class="mt-8 inline-block rounded-full bg-primary-700 px-7 py-4 text-[16px] font-medium text-white">
+          {t.cta.button}
+        </a>
+      </div>
+      <div class="pointer-events-none absolute -bottom-12 right-[-40px] hidden w-[440px] rotate-[-6deg] rounded-3xl border border-border bg-surface p-4 shadow-pop lg:block" aria-hidden="true">
+        <FeatureVisual locale={locale} variant="conversations" />
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-border">
+    <div class="mx-auto grid max-w-[1200px] gap-10 px-6 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div>
+        <a href={home} class="flex items-center gap-2 text-[22px] font-medium text-primary-500">
+          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="currentColor"></rect>
+            <path d="M9 22V10h3v12zm5 0V10h3l6 8.5V10h3v12h-3l-6-8.5V22z" fill="#fff"></path>
+          </svg>
+          Integramate
+        </a>
+        <p class="mt-4 max-w-[280px] text-[14px] text-fg-secondary">{t.footer.tagline}</p>
+      </div>
+      {
+        t.footer.columns.map((col) => (
+          <nav aria-label={col.title}>
+            <h3 class="text-[14px] font-medium">{col.title}</h3>
+            <ul class="mt-4 flex flex-col gap-3 text-[14px] text-fg-secondary">
+              {col.links.map((link) => (
+                <li>
+                  <a href={href(link.href)} class="hover:text-fg">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+    <p class="border-t border-border py-6 text-center text-[13px] text-fg-secondary">
+      © {new Date().getFullYear()} Integramate. {t.footer.rights}
+    </p>
+  </footer>
+</Base>

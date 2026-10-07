@@ -1,0 +1,32 @@
+---
+interface Props {
+  icon?: 'sparkle' | 'coin' | 'dot';
+}
+
+const { icon = 'sparkle' } = Astro.props;
+---
+
+<p
+  class="inline-flex items-center gap-2.5 rounded-full border border-primary-100 bg-surface py-1.5 pl-1.5 pr-4 font-mono text-[13px] uppercase tracking-[0.02em] text-fg shadow-[0_1px_2px_rgba(10,10,10,0.04)]"
+>
+  <span
+    class="flex size-7 items-center justify-center rounded-full bg-gradient-to-b from-primary-400 to-primary-600 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]"
+    aria-hidden="true"
+  >
+    {
+      icon === 'coin' ? (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M15 9h-4.5a1.75 1.75 0 0 0 0 3.5h3a1.75 1.75 0 0 1 0 3.5H9M12 7v10" />
+        </svg>
+      ) : icon === 'dot' ? (
+        <span class="size-2.5 rounded-full bg-white" />
+      ) : (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10Z" />
+        </svg>
+      )
+    }
+  </span>
+  <slot />
+</p>

@@ -1,0 +1,144 @@
+---
+import { useTranslations, type Locale } from '@/i18n';
+
+interface Props {
+  locale: Locale;
+  variant: string;
+}
+
+const { locale, variant } = Astro.props;
+const t = useTranslations(locale).visuals;
+const bars = [30, 55, 40, 68, 48, 82, 60, 74, 92, 52];
+---
+
+<div
+  class:list={['overflow-hidden rounded-2xl border border-border bg-surface', variant === 'inbox' ? 'flex h-[300px] flex-col md:h-[260px]' : 'h-[260px] p-5']}
+  aria-hidden="true"
+>
+  {
+    variant === 'automations' && (
+      <ul class="flex flex-col gap-3">
+        {t.automations.map((name, i) => (
+          <li class="flex items-center justify-between rounded-xl bg-surface-muted px-4 py-3.5">
+            <span class="flex items-center gap-3 text-[14px] font-medium">
+              <span class="size-8 rounded-lg bg-primary-100" />
+              {name}
+            </span>
+            <span
+              class:list={[
+                'rounded-full px-2.5 py-1 text-[12px]',
+                i < 2 ? 'bg-success-50 text-success-700' : 'bg-surface text-fg-tertiary',
+              ]}
+            >
+              {i < 2 ? t.active : t.paused}
+            </span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  {
+    variant === 'conversations' && (
+      <div>
+        <p class="text-[13px] text-fg-secondary">{t.conversations}</p>
+        <p class="mt-2 flex items-center gap-2 text-[34px] font-medium">
+          2,418
+          <span class="rounded-full bg-success-50 px-2 py-0.5 text-[12px] text-success-700">+18%</span>
+        </p>
+        <p class="text-[12px] text-fg-tertiary">{t.thisMonth}</p>
+        <div class="mt-5 flex h-24 items-end gap-2">
+          {bars.map((h) => (
+            <div class="flex-1 rounded-md bg-primary-400" style={`height:${h}%`} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  {
+    variant === 'inbox' && (
+      <>
+        <div class="flex h-12 shrink-0 items-center gap-3 bg-whatsapp-panel px-4 text-whatsapp-icon">
+          <span class="flex size-8 items-end justify-center overflow-hidden rounded-full bg-whatsapp-avatar">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">
+              <circle cx="12" cy="9" r="4.5" />
+              <path d="M3 24c0-5 4-8.5 9-8.5s9 3.5 9 8.5Z" />
+            </svg>
+          </span>
+          <div class="min-w-0 flex-1 leading-tight">
+            <p class="text-[13.5px] text-whatsapp-text">{t.chat.contact}</p>
+            <p class="text-[11.5px] text-whatsapp-meta">{t.chat.status}</p>
+          </div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5" />
+            <path d="m20 20-4.5-4.5" />
+          </svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="5" r="1.8" />
+            <circle cx="12" cy="12" r="1.8" />
+            <circle cx="12" cy="19" r="1.8" />
+          </svg>
+        </div>
+        <div class="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden bg-whatsapp-wallpaper px-5 py-3 [background-image:radial-gradient(rgba(11,20,26,0.06)_1px,transparent_1px)] [background-size:14px_14px]">
+          {t.chat.messages.map((message) => (
+            <div
+              class:list={[
+                'relative max-w-[82%] rounded-lg px-2 pb-1.5 pt-1 text-[13px] leading-[1.35] text-whatsapp-text shadow-[0_1px_0.5px_rgba(11,20,26,0.13)]',
+                message.fromCustomer ? 'self-start rounded-tl-none bg-white' : 'self-end rounded-tr-none bg-whatsapp-outgoing',
+              ]}
+            >
+              {message.fromCustomer ? (
+                <svg class="absolute -left-[7px] top-0 text-white" width="8" height="13" viewBox="0 0 8 13" fill="currentColor">
+                  <path d="M8 0H1.6C.4 0-.2 1.3.6 2.2L8 12Z" />
+                </svg>
+              ) : (
+                <svg class="absolute -right-[7px] top-0 text-whatsapp-outgoing" width="8" height="13" viewBox="0 0 8 13" fill="currentColor">
+                  <path d="M0 0h6.4c1.2 0 1.8 1.3 1 2.2L0 12Z" />
+                </svg>
+              )}
+              {message.text}
+              <span class:list={['inline-block', message.fromCustomer ? 'w-10' : 'w-14']} />
+              <span class="absolute bottom-1 right-2 flex items-center gap-0.5 text-[10.5px] text-whatsapp-meta">
+                {message.time}
+                {!message.fromCustomer && (
+                  <svg class="text-whatsapp-check" width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m1 5.5 3 3 6.5-7M6.5 8l.5.5 6.5-7" />
+                  </svg>
+                )}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div class="flex h-12 shrink-0 items-center gap-3 bg-whatsapp-panel px-4 text-whatsapp-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M8.5 14.5c.9 1.2 2.1 1.8 3.5 1.8s2.6-.6 3.5-1.8" />
+            <circle cx="9" cy="10" r=".6" fill="currentColor" />
+            <circle cx="15" cy="10" r=".6" fill="currentColor" />
+          </svg>
+          <span class="flex-1 rounded-lg bg-white px-3 py-2 text-[12.5px] text-whatsapp-meta">{t.chat.placeholder}</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+            <rect x="9" y="3" width="6" height="11" rx="3" />
+            <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21" />
+          </svg>
+        </div>
+      </>
+    )
+  }
+  {
+    variant === 'executions' && (
+      <div>
+        <p class="text-[14px] font-medium">{t.executions}</p>
+        <div class="mt-4 flex h-[170px] items-end gap-2">
+          {bars.concat(bars.slice(0, 2)).map((h) => (
+            <div class="flex h-full flex-1 items-end rounded-md bg-surface-muted">
+              <div class="w-full rounded-md bg-primary-400" style={`height:${h}%`} />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+</div>
