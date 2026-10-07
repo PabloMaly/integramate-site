@@ -2,6 +2,8 @@
 
 Public landing page for Integramate, built with Astro and Tailwind CSS as a static site for Cloudflare Pages.
 
+![Integramate landing page: hero and dashboard preview](docs/landing.png)
+
 ## Scripts
 
 Install with Bun, then run the scripts from `package.json`:
