@@ -27,24 +27,7 @@ export const en = {
     submit: 'Request access',
     note: 'Access is by invitation. We will get back to you within a day.',
   },
-  mockup: {
-    tabs: ['Dashboard', 'Automations', 'Inbox', 'Executions', 'Team'],
-    title: 'Dashboard',
-    subtitle: 'How your automations performed this month.',
-    conversations: 'Conversations handled',
-    resolved: 'Resolved by AI',
-    hours: 'Hours saved',
-    chart: 'Executions per month',
-    months: ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov'],
-    valueConversations: '2,418',
-    valueResolved: '84.3%',
-  },
   visuals: {
-    automations: ['Customer service', 'Lead capture', 'Internal assistant'],
-    active: 'Active',
-    paused: 'Paused',
-    conversations: 'Conversations',
-    thisMonth: 'This month',
     chat: {
       contact: 'Laura',
       status: 'online',
@@ -56,7 +39,14 @@ export const en = {
         { fromCustomer: false, text: "Done! You're booked for Saturday at 10 am.", time: '10:42' },
       ],
     },
-    executions: 'Executions',
+  },
+  screens: {
+    dashboard: 'The Integramate dashboard: performance metrics, AI resolution over the month and the top automations',
+    appShell: 'The Integramate app, with its navigation and the dashboard open',
+    metrics: 'Performance metrics: 84.3% answered by AI, 96.7% success rate, 342 leads captured and 253 hours saved this month',
+    automations: 'Top automations ranked by success: frequent answers, appointment booking, lead qualification, payment reminders and customer welcome',
+    executions: 'The executions list: every run of an automation, newest first, with its result',
+    inbox: 'A WhatsApp conversation in the shared inbox, answered by the bot and open for a reply',
   },
   features: {
     eyebrow: 'Features',
@@ -69,12 +59,12 @@ export const en = {
         text: 'Pick a package such as customer service or an internal assistant, answer a few questions and switch it on.',
       },
       {
-        visual: 'conversations',
+        visual: 'metrics',
         title: 'Results you can read',
         text: 'See conversations handled, leads captured and hours saved, without opening a single technical screen.',
       },
       {
-        visual: 'inbox',
+        visual: 'chat',
         title: 'WhatsApp first',
         text: 'Your customers keep chatting where they already are. Every conversation lands in one shared inbox.',
       },
@@ -144,33 +134,6 @@ export const en = {
     title: 'Built for Businesses That Want Results',
     primary: 'Request access',
     secondary: 'See pricing',
-    app: {
-      search: 'Search',
-      groups: [
-        {
-          label: 'Daily operation',
-          items: [
-            { icon: 'dashboard', label: 'Dashboard' },
-            { icon: 'automations', label: 'Automations' },
-            { icon: 'inbox', label: 'Inbox' },
-            { icon: 'executions', label: 'Executions' },
-          ],
-        },
-        {
-          label: 'Account',
-          items: [
-            { icon: 'team', label: 'Team' },
-            { icon: 'settings', label: 'Settings' },
-          ],
-        },
-      ],
-      title: 'Dashboard',
-      chartTitle: 'Conversations handled',
-      value: '274',
-      change: '12%',
-      comparison: 'vs last week',
-      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday'],
-    },
   },
   faq: {
     eyebrow: 'FAQ',

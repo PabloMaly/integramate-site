@@ -28,24 +28,7 @@ export const es: Dictionary = {
     submit: 'Solicitar acceso',
     note: 'El acceso es por invitación. Te respondemos en menos de un día.',
   },
-  mockup: {
-    tabs: ['Panel', 'Automatizaciones', 'Bandeja', 'Ejecuciones', 'Equipo'],
-    title: 'Panel',
-    subtitle: 'Cómo rindieron tus automatizaciones este mes.',
-    conversations: 'Conversaciones atendidas',
-    resolved: 'Resueltas por IA',
-    hours: 'Horas ahorradas',
-    chart: 'Ejecuciones por mes',
-    months: ['Ene', 'Mar', 'May', 'Jul', 'Sep', 'Nov'],
-    valueConversations: '2.418',
-    valueResolved: '84,3%',
-  },
   visuals: {
-    automations: ['Atención al cliente', 'Captación de contactos', 'Asistente interno'],
-    active: 'Activa',
-    paused: 'Pausada',
-    conversations: 'Conversaciones',
-    thisMonth: 'Este mes',
     chat: {
       contact: 'Laura',
       status: 'en línea',
@@ -57,7 +40,14 @@ export const es: Dictionary = {
         { fromCustomer: false, text: '¡Listo! Te reservé el sábado a las 10.', time: '10:42' },
       ],
     },
-    executions: 'Ejecuciones',
+  },
+  screens: {
+    dashboard: 'El panel de Integramate: métricas de rendimiento, resolución por IA durante el mes y las mejores automatizaciones',
+    appShell: 'La app de Integramate, con su navegación y el panel abierto',
+    metrics: 'Métricas de rendimiento: 84,3 % respondido por IA, 96,7 % de éxito, 342 contactos captados y 253 horas ahorradas este mes',
+    automations: 'Mejores automatizaciones por tasa de éxito: respuestas frecuentes, reserva de turnos, calificación de contactos, recordatorios de pago y bienvenida',
+    executions: 'La lista de ejecuciones: cada corrida de una automatización, la más reciente primero, con su resultado',
+    inbox: 'Una conversación de WhatsApp en la bandeja compartida, respondida por el bot y lista para contestar',
   },
   features: {
     eyebrow: 'Funciones',
@@ -70,12 +60,12 @@ export const es: Dictionary = {
         text: 'Elige un paquete, como atención al cliente o un asistente interno, responde unas preguntas y actívalo.',
       },
       {
-        visual: 'conversations',
+        visual: 'metrics',
         title: 'Resultados que se entienden',
         text: 'Mira conversaciones atendidas, contactos captados y horas ahorradas, sin abrir una sola pantalla técnica.',
       },
       {
-        visual: 'inbox',
+        visual: 'chat',
         title: 'WhatsApp primero',
         text: 'Tus clientes siguen chateando donde ya están. Cada conversación llega a una bandeja compartida.',
       },
@@ -145,33 +135,6 @@ export const es: Dictionary = {
     title: 'Hecho para Negocios Que Crecen',
     primary: 'Solicitar acceso',
     secondary: 'Ver precios',
-    app: {
-      search: 'Buscar',
-      groups: [
-        {
-          label: 'Operación diaria',
-          items: [
-            { icon: 'dashboard', label: 'Panel' },
-            { icon: 'automations', label: 'Automatizaciones' },
-            { icon: 'inbox', label: 'Bandeja' },
-            { icon: 'executions', label: 'Ejecuciones' },
-          ],
-        },
-        {
-          label: 'Cuenta',
-          items: [
-            { icon: 'team', label: 'Equipo' },
-            { icon: 'settings', label: 'Configuración' },
-          ],
-        },
-      ],
-      title: 'Panel',
-      chartTitle: 'Conversaciones atendidas',
-      value: '274',
-      change: '12%',
-      comparison: 'vs. semana pasada',
-      days: ['Domingo', 'Lunes', 'Martes', 'Miércoles'],
-    },
   },
   faq: {
     eyebrow: 'Preguntas',

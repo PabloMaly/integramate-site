@@ -37,3 +37,18 @@ English lives at `/` and Spanish at `/es/`, through Astro's i18n routing. The co
 ## Design tokens
 
 Colors and type follow the Integramate design system and live in `src/styles/global.css`. Keep them in sync when the design system changes. The `whatsapp-*` colors are only for the chat mock.
+
+## Screenshots
+
+The app screens in `src/assets/screens/` are real captures of the demo build at https://integramate-ia.pages.dev, taken with Playwright in a 1600×1000 viewport at device scale 2, light theme, sidebar expanded, clock fixed at 2026-10-06 12:00 UTC, after `document.fonts.ready`:
+
+| File | Route | Clip |
+| --- | --- | --- |
+| `dashboard.png` | `/dashboard` | Everything right of the sidebar (`aside`) |
+| `app-shell.png` | `/dashboard` | The whole viewport at 1600×1180 |
+| `dashboard-metrics.png` | `/dashboard` | The card `[aria-labelledby="metrics-title"]` |
+| `dashboard-top-automations.png` | `/dashboard` at 1024×2200 | The "Top automations" card, full width in the tablet layout |
+| `executions.png` | `/executions` | The "Executions" card |
+| `inbox-thread.png` | `/inbox/0000000000000000000000c1` | The conversation card |
+
+Astro turns them into AVIF with a WebP fallback at build time (`<Picture>` in `src/components/`). Re-take them the same way when the app changes.
