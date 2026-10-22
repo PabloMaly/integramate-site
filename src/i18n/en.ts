@@ -26,6 +26,14 @@ export const en = {
     emailPlaceholder: 'Enter your work email',
     submit: 'Request access',
     note: 'Access is by invitation. We will get back to you within a day.',
+    states: {
+      sending: 'Sending…',
+      sent: 'Thanks! We will get back to you within a day.',
+      invalid_payload: 'Check the email address and try again.',
+      captcha_failed: 'We could not confirm you are a person. Please try again.',
+      over_request_rate_limit: 'Too many requests. Try again in a minute.',
+      error: 'Something went wrong. Please try again in a moment.',
+    },
   },
   visuals: {
     chat: {

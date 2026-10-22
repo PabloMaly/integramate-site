@@ -27,6 +27,14 @@ export const es: Dictionary = {
     emailPlaceholder: 'Ingresa tu email de trabajo',
     submit: 'Solicitar acceso',
     note: 'El acceso es por invitación. Te respondemos en menos de un día.',
+    states: {
+      sending: 'Enviando…',
+      sent: '¡Gracias! Te respondemos en menos de un día.',
+      invalid_payload: 'Revisa el email e inténtalo de nuevo.',
+      captcha_failed: 'No pudimos confirmar que eres una persona. Inténtalo de nuevo.',
+      over_request_rate_limit: 'Demasiados intentos. Prueba otra vez en un minuto.',
+      error: 'Algo salió mal. Inténtalo de nuevo en un momento.',
+    },
   },
   visuals: {
     chat: {

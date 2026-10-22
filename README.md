@@ -18,6 +18,10 @@ bun run preview  # serve the build locally
 
 `bun run check` and `bun run build` are the checks a change must pass; the repo has no test runner.
 
+## The request-access form
+
+The hero form posts `{ email, locale, captchaToken }` to `POST /leads` of the API in `PUBLIC_API_URL`, which stores the lead and notifies the operator. Turnstile loads only when the visitor focuses the form, with the site key in `PUBLIC_TURNSTILE_SITE_KEY` and the action `lead`; a production build fails without these two variables. Copy `.env.example` to `.env`; for a local loop, run the API with `LANDING_ORIGINS=http://localhost:4321` and either no Turnstile secret (then leave the site key empty) or Cloudflare's always-passing test pair.
+
 ## Site URL and metadata
 
 `astro.config.mjs` reads the canonical origin from `SITE_URL` (default `https://integramate-site.pablomaly.me`). It drives the canonical and hreflang links, the sitemap (`/sitemap-index.xml`, from `@astrojs/sitemap` with both locales), `/robots.txt` (`src/pages/robots.txt.ts`) and the absolute Open Graph URLs. Set it as a build variable on Cloudflare Pages when the domain changes. The app's address, used by the login and legal links, is `APP_URL` in `src/config.ts`.
