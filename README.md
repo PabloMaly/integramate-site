@@ -11,9 +11,20 @@ Install with Bun, then run the scripts from `package.json`:
 ```sh
 bun install
 bun run dev      # dev server at http://localhost:4321
+bun run check    # astro check: types in .astro and .ts files
 bun run build    # static build to dist/
 bun run preview  # serve the build locally
 ```
+
+`bun run check` and `bun run build` are the checks a change must pass; the repo has no test runner.
+
+## Site URL and metadata
+
+`astro.config.mjs` reads the canonical origin from `SITE_URL` (default `https://integramate-site.pablomaly.me`). It drives the canonical and hreflang links, the sitemap (`/sitemap-index.xml`, from `@astrojs/sitemap` with both locales), `/robots.txt` (`src/pages/robots.txt.ts`) and the absolute Open Graph URLs. Set it as a build variable on Cloudflare Pages when the domain changes. The app's address, used by the login and legal links, is `APP_URL` in `src/config.ts`.
+
+`src/pages/404.astro` builds to `dist/404.html`; without it Cloudflare Pages serves the home page for every unknown path. `public/_headers` adds the security headers, immutable caching for `/_astro/*` and `noindex` for the `pages.dev` copy of the site.
+
+The social images `public/og-en.png` and `public/og-es.png` (1200×630) are rendered once from a small HTML page with the brand and the hero title; regenerate them the same way when the title changes.
 
 ## Languages
 

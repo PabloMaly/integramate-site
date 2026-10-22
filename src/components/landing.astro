@@ -15,7 +15,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const home = localeUrl(locale);
-const href = (target: string) => (target.startsWith('#') ? `${home}${target}` : localeUrl(locale, target));
+const href = (target: string) => (target.startsWith('#') ? `${home}${target}` : target);
 
 const icons: Record<string, string> = {
   chart: 'M4 20V10m6 10V4m6 16v-7m6 7H2',

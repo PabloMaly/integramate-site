@@ -1,0 +1,17 @@
+---
+import Base from '@/layouts/base.astro';
+import SiteHeader from '@/components/site-header.astro';
+---
+
+<Base title="Page not found · Integramate" description="This page does not exist." locale="en" noindex>
+  <SiteHeader locale="en" />
+  <main class="mx-auto flex max-w-[1200px] flex-col items-center px-6 py-24 text-center">
+    <p class="text-[14px] text-fg-secondary">404</p>
+    <h1 class="mt-4 text-[34px] font-medium tracking-[-0.03em] md:text-[48px]">Page not found</h1>
+    <p class="mt-4 text-[17px] text-fg-secondary" lang="es">Página no encontrada</p>
+    <p class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="rounded-full bg-fg px-5 py-3 text-[15px] font-medium text-white">Go to the home page</a>
+      <a href="/es/" lang="es" class="rounded-full border border-border px-5 py-3 text-[15px]">Ir al inicio</a>
+    </p>
+  </main>
+</Base>
