@@ -26,7 +26,6 @@ export const es: Dictionary = {
     emailLabel: 'Email de trabajo',
     emailPlaceholder: 'Ingresa tu email de trabajo',
     submit: 'Solicitar acceso',
-    note: 'El acceso es por invitación. Te respondemos en menos de un día.',
     states: {
       sending: 'Enviando…',
       sent: '¡Gracias! Te respondemos en menos de un día.',
@@ -167,7 +166,7 @@ export const es: Dictionary = {
       },
       {
         q: '¿Cómo obtengo acceso?',
-        a: 'El acceso es por invitación. Déjanos tu email y te respondemos en menos de un día.',
+        a: 'Regístrate con tu email en el formulario y te enviamos el acceso.',
       },
       {
         q: '¿Cómo funcionan los planes?',

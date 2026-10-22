@@ -1,4 +1,5 @@
 ---
+import LogoMark from '@/components/logo-mark.astro';
 import { APP_URL } from '@/config';
 import { localeUrl, useTranslations, type Locale } from '@/i18n';
 
@@ -21,12 +22,12 @@ const links = [
 ---
 
 <header class="mx-auto flex h-20 max-w-[1200px] items-center justify-between gap-2 px-4 md:px-6">
-  <a href={home} class="flex shrink-0 items-center gap-2 text-[18px] font-medium text-primary-500 md:text-[24px]">
-    <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-      <rect width="32" height="32" rx="8" fill="currentColor"></rect>
-      <path d="M9 22V10h3v12zm5 0V10h3l6 8.5V10h3v12h-3l-6-8.5V22z" fill="#fff"></path>
-    </svg>
-    <span class="max-[430px]:sr-only">Integramate</span>
+  <a href={home} class="flex shrink-0 items-center gap-3">
+    <LogoMark />
+    <span class="min-w-0 leading-none max-[430px]:sr-only">
+      <span class="block text-[17px] font-medium tracking-[-0.01em] text-fg">Integramate</span>
+      <span class="mt-0.5 block text-[13px] text-fg-secondary">AI Solutions</span>
+    </span>
   </a>
   <nav aria-label={t.nav.label} class="hidden items-center gap-8 md:flex">
     {

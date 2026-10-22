@@ -25,7 +25,6 @@ export const en = {
     emailLabel: 'Work email',
     emailPlaceholder: 'Enter your work email',
     submit: 'Request access',
-    note: 'Access is by invitation. We will get back to you within a day.',
     states: {
       sending: 'Sending…',
       sent: 'Thanks! We will get back to you within a day.',
@@ -166,7 +165,7 @@ export const en = {
       },
       {
         q: 'How do I get access?',
-        a: 'Access is by invitation. Leave your email and we will get back to you within a day.',
+        a: 'Sign up with your email in the form above and we will send you your access.',
       },
       {
         q: 'How do plans work?',
