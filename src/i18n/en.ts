@@ -1,3 +1,5 @@
+import { APP_URL } from '@/config';
+
 export const en = {
   meta: {
     title: 'Integramate · AI automations for WhatsApp',
@@ -217,8 +219,8 @@ export const en = {
       {
         title: 'Legal',
         links: [
-          { label: 'Terms', href: 'terms' },
-          { label: 'Privacy', href: 'privacy' },
+          { label: 'Terms', href: `${APP_URL}/terms` },
+          { label: 'Privacy', href: `${APP_URL}/privacy` },
         ],
       },
     ],

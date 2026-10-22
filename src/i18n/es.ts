@@ -1,3 +1,4 @@
+import { APP_URL } from '@/config';
 import type { Dictionary } from './en';
 
 export const es: Dictionary = {
@@ -123,7 +124,7 @@ export const es: Dictionary = {
     subtitle: 'Integramate es más que un chatbot: es un sistema completo para responder más rápido y vender más.',
     items: [
       { icon: 'chart', title: 'Mejores resultados', text: 'Resuelve más conversaciones sin hacer crecer el equipo.' },
-      { icon: 'clock', title: 'Tiempo de vuelta', text: 'Deja que las automatizaciones atiendan las preguntas repetitivas, de día y de noche.' },
+      { icon: 'clock', title: 'Más tiempo libre', text: 'Deja que las automatizaciones atiendan las preguntas repetitivas, de día y de noche.' },
       { icon: 'heart', title: 'Clientes más contentos', text: 'Respuestas rápidas y consistentes en el canal que ya usan.' },
     ],
   },
@@ -219,8 +220,8 @@ export const es: Dictionary = {
       {
         title: 'Legal',
         links: [
-          { label: 'Términos', href: 'terms' },
-          { label: 'Privacidad', href: 'privacy' },
+          { label: 'Términos', href: `${APP_URL}/terms` },
+          { label: 'Privacidad', href: `${APP_URL}/privacy` },
         ],
       },
     ],

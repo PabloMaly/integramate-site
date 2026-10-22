@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css';
+import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+import inter500 from '@fontsource/inter/files/inter-latin-500-normal.woff2?url';
 import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import type { Locale } from '@/i18n';
 
@@ -7,10 +9,21 @@ interface Props {
   title: string;
   description: string;
   locale: Locale;
+  noindex?: boolean;
 }
 
-const { title, description, locale } = Astro.props;
+const { title, description, locale, noindex = false } = Astro.props;
 const locales = ['en', 'es'] as const;
+const ogLocale = { en: 'en_US', es: 'es_419' } as const;
+const canonical = getAbsoluteLocaleUrl(locale);
+const ogImage = new URL(`/og-${locale}.png`, Astro.site);
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Integramate',
+  url: Astro.site,
+  logo: new URL('/favicon.svg', Astro.site),
+};
 ---
 
 <!doctype html>
@@ -20,14 +33,30 @@ const locales = ['en', 'es'] as const;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={getAbsoluteLocaleUrl(locale)} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href={canonical} />
     {locales.map((l) => <link rel="alternate" hreflang={l} href={getAbsoluteLocaleUrl(l)} />)}
     <link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl('en')} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="font" type="font/woff2" href={inter400} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={inter500} crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Integramate" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content={locale === 'es' ? 'es_419' : 'en_US'} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:locale" content={ogLocale[locale]} />
+    {locales.filter((l) => l !== locale).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(organization)} />
   </head>
   <body>
     <slot />
