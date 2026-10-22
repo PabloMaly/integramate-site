@@ -60,6 +60,19 @@
   --color-whatsapp-check: #53bdeb;
 }
 
+/* Both prices are in the HTML; the Pages middleware marks Argentina with data-currency="ars". */
+[data-ars] {
+  display: none;
+}
+
+html[data-currency='ars'] [data-ars] {
+  display: inline;
+}
+
+html[data-currency='ars'] [data-usd] {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
