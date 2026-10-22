@@ -34,6 +34,8 @@ English lives at `/` and Spanish at `/es/`, through Astro's i18n routing. The co
 
 `functions/_middleware.ts` is a Cloudflare Pages Function. On `/` it sends visitors from Spanish-speaking countries, read from the `CF-IPCountry` header, to `/es/`. Choosing a language in the header switcher stores a `lang` cookie that wins over the country. The middleware only runs on Cloudflare Pages, not in `bun run dev`.
 
+The same function shows prices in ARS to visitors in Argentina (`CF-IPCountry` is `AR`): both prices are in the HTML, and it sets `data-currency="ars"` on `<html>` with HTMLRewriter so the CSS shows one. Everywhere else, including `bun run dev`, preview deployments and crawlers, the prices are in USD.
+
 ## Design tokens
 
 Colors and type follow the Integramate design system and live in `src/styles/global.css`. Keep them in sync when the design system changes. The `whatsapp-*` colors are only for the chat mock.

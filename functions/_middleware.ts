@@ -1,5 +1,6 @@
 // Cloudflare Pages middleware: sends first-time visitors of "/" to the Spanish
-// site when Cloudflare geolocates them in a Spanish-speaking country.
+// site when Cloudflare geolocates them in a Spanish-speaking country, and shows
+// prices in ARS to visitors in Argentina.
 const SPANISH_COUNTRIES = new Set([
   'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'ES', 'GQ', 'GT', 'HN', 'MX', 'NI', 'PA', 'PE', 'PR', 'PY', 'SV', 'UY', 'VE',
 ]);
@@ -13,15 +14,25 @@ function readCookie(header: string | null, name: string): string | undefined {
 
 export const onRequest: PagesFunction = async (context) => {
   const url = new URL(context.request.url);
-  if (url.pathname !== '/') return context.next();
+  const country = context.request.headers.get('CF-IPCountry');
 
-  const saved = readCookie(context.request.headers.get('Cookie'), 'lang');
-  if (saved === 'en' || saved === 'es') {
-    return saved === 'es' ? redirectTo(url, '/es/') : context.next();
+  if (url.pathname === '/') {
+    const saved = readCookie(context.request.headers.get('Cookie'), 'lang');
+    if (saved === 'es' || (saved !== 'en' && country !== null && SPANISH_COUNTRIES.has(country))) return redirectTo(url, '/es/');
+  } else if (url.pathname !== '/es/') {
+    return context.next();
   }
 
-  const country = context.request.headers.get('CF-IPCountry');
-  return country && SPANISH_COUNTRIES.has(country) ? redirectTo(url, '/es/') : context.next();
+  const response = await context.next();
+  // Both prices are in the HTML and the CSS shows one; USD is the default, so previews and crawlers see it.
+  if (country !== 'AR') return response;
+  return new HTMLRewriter()
+    .on('html', {
+      element(html) {
+        html.setAttribute('data-currency', 'ars');
+      },
+    })
+    .transform(response);
 };
 
 function redirectTo(url: URL, path: string): Response {

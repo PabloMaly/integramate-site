@@ -17,6 +17,17 @@ const t = useTranslations(locale);
 const home = localeUrl(locale);
 const href = (target: string) => (target.startsWith('#') ? `${home}${target}` : target);
 
+// What crawlers see: the USD list prices. Argentina gets ARS through the Pages middleware (functions/_middleware.ts).
+const software = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Integramate',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: Astro.site,
+  offers: t.pricing.plans.map((plan) => ({ '@type': 'Offer', name: plan.name, price: plan.usd.replace(/\D/g, ''), priceCurrency: 'USD' })),
+};
+
 const icons: Record<string, string> = {
   chart: 'M4 20V10m6 10V4m6 16v-7m6 7H2',
   clock: 'M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z',
@@ -25,6 +36,7 @@ const icons: Record<string, string> = {
 ---
 
 <Base title={t.meta.title} description={t.meta.description} locale={locale}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(software)} />
   <div class="relative overflow-hidden">
     <div
       class="pointer-events-none absolute -right-24 top-[280px] h-[420px] w-[34%] rounded-l-[80px] bg-gradient-to-l from-primary-500 to-transparent opacity-80 blur-[60px]"
@@ -122,7 +134,10 @@ const icons: Record<string, string> = {
                 )}
                 <h3 class="relative text-[24px] font-medium tracking-[-0.025em] lg:text-[28px]">{plan.name}</h3>
                 <p class="relative mt-3 flex-1 text-[15px] leading-relaxed text-fg-secondary lg:text-[16px]">{plan.description}</p>
-                <p class="relative mt-6 text-[40px] font-medium leading-none tracking-[-0.035em] lg:text-[46px]">{plan.price}</p>
+                <p class="relative mt-6 text-[40px] font-medium leading-none tracking-[-0.035em] lg:text-[46px]">
+                  <span data-usd>{plan.usd}</span><span data-ars>{plan.ars}</span>
+                  <span class="mt-2 block text-[14px] font-normal tracking-normal text-fg-secondary">{t.pricing.perMonth}</span>
+                </p>
                 <a
                   href={href('#contact')}
                   class:list={[
