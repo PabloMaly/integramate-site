@@ -93,8 +93,8 @@ export const es: Dictionary = {
       {
         name: 'Starter',
         description: 'Para equipos pequeños que automatizan sus primeras conversaciones.',
-        usd: 'US$ 10',
-        ars: 'ARS 15.500',
+        usd: 'US$ 15',
+        ars: 'ARS 21.900',
         cta: 'Hablemos',
         featured: false,
         features: ['3 automatizaciones activas', '300 chats de WhatsApp por mes', '2 personas', 'Bandeja compartida y panel de resultados', 'Soporte por email'],
@@ -102,8 +102,8 @@ export const es: Dictionary = {
       {
         name: 'Pro',
         description: 'Para negocios en crecimiento que viven en WhatsApp.',
-        usd: 'US$ 30',
-        ars: 'ARS 46.500',
+        usd: 'US$ 29',
+        ars: 'ARS 44.900',
         cta: 'Empezar',
         featured: true,
         features: ['10 automatizaciones activas', '1.000 chats de WhatsApp por mes', '10 personas con roles', 'Bandeja compartida y panel de resultados', 'Soporte prioritario'],
@@ -111,8 +111,8 @@ export const es: Dictionary = {
       {
         name: 'Business',
         description: 'Para empresas que necesitan más automatizaciones y más control.',
-        usd: 'US$ 50',
-        ars: 'ARS 77.500',
+        usd: 'US$ 65',
+        ars: 'ARS 99.900',
         cta: 'Hablemos',
         featured: false,
         features: ['25 automatizaciones activas', '5.000 chats de WhatsApp por mes', '25 personas con roles', 'Bandeja compartida y panel de resultados', 'Onboarding dedicado'],

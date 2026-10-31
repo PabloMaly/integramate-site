@@ -92,8 +92,8 @@ export const en = {
       {
         name: 'Starter',
         description: 'For small teams automating their first conversations.',
-        usd: 'USD 10',
-        ars: 'ARS 15,500',
+        usd: 'USD 15',
+        ars: 'ARS 21,900',
         cta: 'Talk to us',
         featured: false,
         features: ['3 active automations', '300 WhatsApp chats a month', '2 people', 'Shared inbox and results dashboard', 'Email support'],
@@ -101,8 +101,8 @@ export const en = {
       {
         name: 'Pro',
         description: 'For growing businesses that live on WhatsApp.',
-        usd: 'USD 30',
-        ars: 'ARS 46,500',
+        usd: 'USD 29',
+        ars: 'ARS 44,900',
         cta: 'Get started',
         featured: true,
         features: ['10 active automations', '1,000 WhatsApp chats a month', '10 people with roles', 'Shared inbox and results dashboard', 'Priority support'],
@@ -110,8 +110,8 @@ export const en = {
       {
         name: 'Business',
         description: 'For companies that need more automations and more control.',
-        usd: 'USD 50',
-        ars: 'ARS 77,500',
+        usd: 'USD 65',
+        ars: 'ARS 99,900',
         cta: 'Talk to us',
         featured: false,
         features: ['25 active automations', '5,000 WhatsApp chats a month', '25 people with roles', 'Shared inbox and results dashboard', 'Dedicated onboarding'],
