@@ -13,7 +13,7 @@ export const es: Dictionary = {
     pricing: 'Precios',
     faq: 'Preguntas',
     contact: 'Contacto',
-    login: 'Ingresar',
+    login: 'Iniciar sesión',
     getStarted: 'Empezar',
     language: 'Idioma',
     menu: 'Menú',
