@@ -7,6 +7,7 @@ import Eyebrow from '@/components/eyebrow.astro';
 import AppShowcase from '@/components/app-showcase.astro';
 import FeatureVisual from '@/components/feature-visual.astro';
 import LogoMark from '@/components/logo-mark.astro';
+import { APP_URL } from '@/config';
 import { localeUrl, useTranslations, type Locale } from '@/i18n';
 
 interface Props {
@@ -22,6 +23,8 @@ const apiUrl = import.meta.env.PUBLIC_API_URL ?? '';
 const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '';
 if (import.meta.env.PROD && (!apiUrl || !siteKey)) throw new Error('PUBLIC_API_URL and PUBLIC_TURNSTILE_SITE_KEY are required');
 const href = (target: string) => (target.startsWith('#') ? `${home}${target}` : target);
+// shortcut: no public demo URL, the hero secondary scrolls to the on-page chat until one exists.
+// shortcut: no public calendar URL, Enterprise opens the request-access form until calendarUrl is set. Paid plans open /signup; this site has no trial flag.
 
 // What crawlers see: the USD list prices. Argentina gets ARS through the Pages middleware (functions/_middleware.ts).
 const software = {
@@ -31,7 +34,10 @@ const software = {
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   url: Astro.site,
-  offers: t.pricing.plans.map((plan) => ({ '@type': 'Offer', name: plan.name, price: plan.usd.replace(/\D/g, ''), priceCurrency: 'USD' })),
+  offers: t.pricing.plans.flatMap((plan) => {
+    const price = plan.usd.replace(/\D/g, '');
+    return price ? [{ '@type': 'Offer', name: plan.name, price, priceCurrency: 'USD' }] : [];
+  }),
 };
 
 // shortcut: the handles are placeholders, replace them when the accounts exist
@@ -122,6 +128,12 @@ const icons: Record<string, string> = {
         </form>
         <div data-turnstile class="mt-3 empty:hidden"></div>
         <p data-status aria-live="polite" class="mt-4 min-h-5 text-[13px] text-fg-secondary"></p>
+        <a
+          href={`${home}#whatsapp-reply`}
+          class="mt-2 inline-flex rounded-xl border border-border bg-surface px-5 py-3 text-[15px] font-medium text-fg shadow-pop"
+        >
+          {t.hero.secondary}
+        </a>
       </section>
 
       <section class="px-4 md:px-6">
@@ -135,7 +147,10 @@ const icons: Record<string, string> = {
     <div class="mt-14 grid gap-6 md:grid-cols-2">
       {
         t.features.items.map((f, i) => (
-          <article class:list={['rounded-[28px] p-4', i === 0 ? 'bg-gradient-to-b from-primary-400 to-primary-100' : 'bg-surface-muted']}>
+          <article
+            id={f.visual === 'chat' ? 'whatsapp-reply' : undefined}
+            class:list={['scroll-mt-8 rounded-[28px] p-4', i === 0 ? 'bg-gradient-to-b from-primary-400 to-primary-100' : 'bg-surface-muted']}
+          >
             <FeatureVisual locale={locale} variant={f.visual} />
             <h3 class="mt-5 px-3 text-[18px] font-medium">{f.title}</h3>
             <p class="mb-2 mt-2 px-3 text-[15px] leading-relaxed text-fg-secondary">{f.text}</p>
@@ -148,12 +163,12 @@ const icons: Record<string, string> = {
   <section id="pricing" class="scroll-mt-8 bg-surface-muted py-24">
     <div class="mx-auto max-w-[1200px] px-6">
       <SectionHeading eyebrow={t.pricing.eyebrow} title={t.pricing.title} subtitle={t.pricing.subtitle} icon="coin" wide />
-      <div class="mt-14 grid gap-5 md:grid-cols-3 md:grid-rows-[auto_auto] md:gap-4 lg:gap-6">
+      <div class="mt-14 grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6">
         {
           t.pricing.plans.map((plan) => (
             <article
               class:list={[
-                'grid gap-0 rounded-[28px] border p-2.5 md:row-span-2 md:grid-rows-subgrid',
+                'flex flex-col rounded-[28px] border p-2.5',
                 plan.featured
                   ? 'border-primary-600 bg-gradient-to-b from-primary-600 to-primary-700 shadow-[0_16px_40px_-12px_rgba(181,80,31,0.45)]'
                   : 'border-border bg-surface',
@@ -161,7 +176,7 @@ const icons: Record<string, string> = {
             >
               <div
                 class:list={[
-                  'relative flex flex-col overflow-hidden rounded-[20px] p-5 lg:p-6',
+                  'relative flex flex-1 flex-col overflow-hidden rounded-[20px] p-5 lg:p-6',
                   plan.featured ? 'bg-surface shadow-[0_2px_10px_rgba(10,10,10,0.08)]' : 'bg-surface-muted',
                 ]}
               >
@@ -171,14 +186,27 @@ const icons: Record<string, string> = {
                     aria-hidden="true"
                   />
                 )}
-                <h3 class="relative text-[24px] font-medium tracking-[-0.025em] lg:text-[28px]">{plan.name}</h3>
-                <p class="relative mt-3 flex-1 text-[15px] leading-relaxed text-fg-secondary lg:text-[16px]">{plan.description}</p>
-                <p class="relative mt-6 text-[40px] font-medium leading-none tracking-[-0.035em] lg:text-[46px]">
-                  <span data-usd>{plan.usd}</span><span data-ars>{plan.ars}</span>
-                  <span class="mt-2 block text-[14px] font-normal tracking-normal text-fg-secondary">{t.pricing.perMonth}</span>
+                <div class="relative flex items-start justify-between gap-3">
+                  <h3 class="text-[24px] font-medium tracking-[-0.025em] lg:text-[28px]">{plan.name}</h3>
+                  {plan.badge && (
+                    <span class="shrink-0 rounded-full bg-primary-100 px-2.5 py-1 text-[12px] font-medium text-primary-700">{plan.badge}</span>
+                  )}
+                </div>
+                <p class="relative mt-6 text-[32px] font-medium leading-none tracking-[-0.035em] sm:text-[40px] lg:text-[46px]">
+                  {plan.custom ? (
+                    plan.custom
+                  ) : (
+                    <>
+                      <span data-usd>{plan.usd}</span>
+                      <span data-ars>{plan.ars}</span>
+                    </>
+                  )}
+                  {!plan.custom && (
+                    <span class="mt-2 block text-[14px] font-normal tracking-normal text-fg-secondary">{t.pricing.perMonth}</span>
+                  )}
                 </p>
                 <a
-                  href={href('#contact')}
+                  href={plan.custom ? href('#contact') : `${APP_URL}/signup`}
                   class:list={[
                     'relative mt-6 block rounded-xl py-4 text-center text-[16px] font-medium text-white lg:text-[17px]',
                     plan.featured
@@ -207,6 +235,16 @@ const icons: Record<string, string> = {
             </article>
           ))
         }
+      </div>
+      <div class="mx-auto mt-8 max-w-[760px] text-center">
+        <p class="text-[16px] leading-relaxed text-fg md:text-[17px]">
+          {t.pricing.extra.before}
+          <span data-usd>{t.pricing.extra.usd}</span>
+          <span data-ars>{t.pricing.extra.ars}</span>
+          {t.pricing.extra.after}
+        </p>
+        <p class="mt-4 text-[14px] leading-relaxed text-fg-secondary">{t.pricing.meta}</p>
+        <p class="mt-2 text-[14px] leading-relaxed text-fg-secondary">{t.pricing.cancel}</p>
       </div>
     </div>
   </section>
