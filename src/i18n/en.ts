@@ -25,6 +25,8 @@ export const en = {
     emailLabel: 'Work email',
     emailPlaceholder: 'Enter your work email',
     submit: 'Request access',
+    trial: 'Try it free for 7 days',
+    trialNote: 'No card needed. Cancel anytime.',
     secondary: 'Show me how it would answer my WhatsApp',
     states: {
       sending: 'Sending…',

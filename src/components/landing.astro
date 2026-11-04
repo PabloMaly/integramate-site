@@ -24,7 +24,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '';
 if (import.meta.env.PROD && (!apiUrl || !siteKey)) throw new Error('PUBLIC_API_URL and PUBLIC_TURNSTILE_SITE_KEY are required');
 const href = (target: string) => (target.startsWith('#') ? `${home}${target}` : target);
 // shortcut: no public demo URL, the hero secondary scrolls to the on-page chat until one exists.
-// shortcut: no public calendar URL, Enterprise opens the request-access form until calendarUrl is set. Paid plans open /signup; this site has no trial flag.
+// shortcut: no public calendar URL, Enterprise opens the request-access form until calendarUrl is set. The hero and paid plans open /signup; this site has no trial flag.
 
 // What crawlers see: the USD list prices. Argentina gets ARS through the Pages middleware (functions/_middleware.ts).
 const software = {
@@ -80,6 +80,10 @@ const icons: Record<string, string> = {
           <em class="block">{t.hero.titleLine2}</em>
         </h1>
         <p class="mt-8 max-w-[760px] text-[17px] leading-relaxed text-fg-secondary md:text-[19px]">{t.hero.text}</p>
+        <a href={`${APP_URL}/signup`} class="mt-10 inline-flex rounded-full bg-fg px-6 py-3.5 text-[16px] font-medium text-white">
+          {t.hero.trial}
+        </a>
+        <p class="mt-3 text-[14px] text-fg-secondary">{t.hero.trialNote}</p>
         <form
           id="contact"
           method="post"

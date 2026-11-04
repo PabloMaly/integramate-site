@@ -26,6 +26,8 @@ export const es: Dictionary = {
     emailLabel: 'Email de trabajo',
     emailPlaceholder: 'Ingresá tu email de trabajo',
     submit: 'Solicitar acceso',
+    trial: 'Probalo gratis 7 días',
+    trialNote: 'Sin tarjeta. Cancelá cuando quieras.',
     secondary: 'Mostrame cómo respondería mi WhatsApp',
     states: {
       sending: 'Enviando…',
