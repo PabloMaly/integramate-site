@@ -86,6 +86,7 @@ export const en = {
   pricing: {
     eyebrow: 'Pricing plans',
     title: 'Clear pricing. No hidden fees.',
+    titleArs: null as string | null,
     subtitle: 'Try any plan for 7 days. No card needed.',
     includes: 'Includes:',
     perMonth: '/ month',
@@ -107,7 +108,7 @@ export const en = {
         cta: 'Try it 7 days',
         featured: false,
         badge: null,
-        features: ['1,000 chats handled per month', '2 team members'],
+        features: ['1,000 chats handled per month', '2 team members', '3 automations'],
       },
       {
         name: 'Pro',
@@ -117,7 +118,7 @@ export const en = {
         cta: 'Try it 7 days',
         featured: true,
         badge: 'Most popular',
-        features: ['3,000 chats per month', '10 team members'],
+        features: ['3,000 chats per month', '10 team members', '10 automations'],
       },
       {
         name: 'Business',
@@ -127,7 +128,7 @@ export const en = {
         cta: 'Try it 7 days',
         featured: false,
         badge: null,
-        features: ['10,000 chats per month', '25 team members'],
+        features: ['10,000 chats per month', '25 team members', '25 automations'],
       },
       {
         name: 'Enterprise',

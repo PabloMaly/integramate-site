@@ -86,7 +86,8 @@ export const es: Dictionary = {
   },
   pricing: {
     eyebrow: 'Planes y precios',
-    title: 'Precios en pesos. Sin dólar y sin letra chica.',
+    title: 'Precios claros. Sin letra chica.',
+    titleArs: 'Precios en pesos. Sin dólar y sin letra chica.',
     subtitle: 'Probá cualquier plan 7 días. Sin tarjeta.',
     includes: 'Incluye:',
     perMonth: '/ mes',
@@ -108,7 +109,7 @@ export const es: Dictionary = {
         cta: 'Probalo gratis 7 días',
         featured: false,
         badge: null,
-        features: ['1.000 chats atendidos por mes', '2 integrantes del equipo'],
+        features: ['1.000 chats atendidos por mes', '2 integrantes del equipo', '3 automatizaciones'],
       },
       {
         name: 'Pro',
@@ -118,7 +119,7 @@ export const es: Dictionary = {
         cta: 'Probalo gratis 7 días',
         featured: true,
         badge: 'Más elegido',
-        features: ['3.000 chats atendidos por mes', '10 integrantes del equipo'],
+        features: ['3.000 chats atendidos por mes', '10 integrantes del equipo', '10 automatizaciones'],
       },
       {
         name: 'Business',
@@ -128,7 +129,7 @@ export const es: Dictionary = {
         cta: 'Probalo gratis 7 días',
         featured: false,
         badge: null,
-        features: ['10.000 chats atendidos por mes', '25 integrantes del equipo'],
+        features: ['10.000 chats atendidos por mes', '25 integrantes del equipo', '25 automatizaciones'],
       },
       {
         name: 'Enterprise',
