@@ -3,9 +3,9 @@ import type { Dictionary } from './en';
 
 export const es: Dictionary = {
   meta: {
-    title: 'Integramate · Automatizaciones con IA para WhatsApp',
+    title: 'Integramate · Automatizaciones para WhatsApp',
     description:
-      'Activá automatizaciones con IA para WhatsApp, atendé a tus clientes las 24 horas y mirá los resultados en un panel simple.',
+      'Activá automatizaciones para WhatsApp, atendé a tus clientes las 24 horas y mirá los resultados en un panel simple.',
   },
   nav: {
     label: 'Principal',
@@ -19,10 +19,10 @@ export const es: Dictionary = {
     menu: 'Menú',
   },
   hero: {
-    badge: 'La mejor forma de usar IA en WhatsApp',
+    badge: 'La mejor forma de automatizar WhatsApp',
     titleLine1: 'Atendé a Cada Cliente. Crecé',
     titleLine2: 'Más Rápido.',
-    text: 'Integramate es la forma simple y potente de ejecutar automatizaciones con IA en WhatsApp: responde, capta clientes potenciales y hace seguimiento las 24 horas, para que tu equipo venda mejor y gane más sin el caos.',
+    text: 'Integramate es la forma simple y potente de ejecutar automatizaciones en WhatsApp: responde, capta clientes potenciales y hace seguimiento las 24 horas, para que tu equipo venda mejor y gane más sin el caos.',
     emailLabel: 'Email de trabajo',
     emailPlaceholder: 'Ingresá tu email de trabajo',
     submit: 'Solicitar acceso',
@@ -52,9 +52,9 @@ export const es: Dictionary = {
     },
   },
   screens: {
-    dashboard: 'El panel de Integramate: métricas de rendimiento, resolución por IA durante el mes y las mejores automatizaciones',
+    dashboard: 'El panel de Integramate: métricas de rendimiento, resolución del bot durante el mes y las mejores automatizaciones',
     appShell: 'La app de Integramate, con su navegación y el panel abierto',
-    metrics: 'Métricas de rendimiento: 84,3 % respondido por IA, 96,7 % de éxito, 342 contactos captados y 253 horas ahorradas este mes',
+    metrics: 'Métricas de rendimiento: 84,3 % respondido por el bot, 96,7 % de éxito, 342 contactos captados y 253 horas ahorradas este mes',
     automations: 'Mejores automatizaciones por tasa de éxito: respuestas frecuentes, reserva de turnos, calificación de contactos, recordatorios de pago y bienvenida',
     executions: 'La lista de ejecuciones: cada corrida de una automatización, la más reciente primero, con su resultado',
     inbox: 'Una conversación de WhatsApp en la bandeja compartida, respondida por el bot y lista para contestar',
@@ -200,7 +200,7 @@ export const es: Dictionary = {
       },
       {
         q: '¿Qué es un chat?',
-        a: 'Un cliente atendido por tu bot en una ventana de 24 horas. Si vuelve a escribir dentro de esas 24 h no suma; si escribe después, cuenta como un chat nuevo.',
+        a: 'Una conversación con un cliente que tu bot respondió al menos una vez durante el mes. Si ese cliente vuelve a escribir en el mismo mes, no suma otro chat.',
       },
       {
         q: '¿Qué pasa si llego al límite de chats?',
@@ -222,7 +222,8 @@ export const es: Dictionary = {
     button: 'Solicitar acceso',
   },
   footer: {
-    tagline: 'Automatizaciones con IA para negocios que viven en WhatsApp.',
+    brand: 'Automatizaciones',
+    tagline: 'Automatizaciones para negocios que viven en WhatsApp.',
     columns: [
       {
         title: 'Producto',

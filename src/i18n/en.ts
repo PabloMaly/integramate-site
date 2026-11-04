@@ -2,9 +2,9 @@ import { APP_URL } from '@/config';
 
 export const en = {
   meta: {
-    title: 'Integramate · AI automations for WhatsApp',
+    title: 'Integramate · Automations for WhatsApp',
     description:
-      'Activate ready-made AI automations for WhatsApp, answer customers around the clock and see the results in one simple dashboard.',
+      'Activate ready-made automations for WhatsApp, answer customers around the clock and see the results in one simple dashboard.',
   },
   nav: {
     label: 'Main',
@@ -18,10 +18,10 @@ export const en = {
     menu: 'Menu',
   },
   hero: {
-    badge: 'Best way to run AI on WhatsApp',
+    badge: 'Best way to automate WhatsApp',
     titleLine1: 'Answer Every Customer. Grow',
     titleLine2: 'Revenue Faster.',
-    text: 'Integramate is the simple, powerful way to run AI automations on WhatsApp: it replies, captures leads and follows up around the clock, so your team sells smarter and wins more without the chaos.',
+    text: 'Integramate is the simple, powerful way to run automations on WhatsApp: it replies, captures leads and follows up around the clock, so your team sells smarter and wins more without the chaos.',
     emailLabel: 'Work email',
     emailPlaceholder: 'Enter your work email',
     submit: 'Request access',
@@ -51,9 +51,9 @@ export const en = {
     },
   },
   screens: {
-    dashboard: 'The Integramate dashboard: performance metrics, AI resolution over the month and the top automations',
+    dashboard: 'The Integramate dashboard: performance metrics, bot resolution over the month and the top automations',
     appShell: 'The Integramate app, with its navigation and the dashboard open',
-    metrics: 'Performance metrics: 84.3% answered by AI, 96.7% success rate, 342 leads captured and 253 hours saved this month',
+    metrics: 'Performance metrics: 84.3% answered by the bot, 96.7% success rate, 342 leads captured and 253 hours saved this month',
     automations: 'Top automations ranked by success: frequent answers, appointment booking, lead qualification, payment reminders and customer welcome',
     executions: 'The executions list: every run of an automation, newest first, with its result',
     inbox: 'A WhatsApp conversation in the shared inbox, answered by the bot and open for a reply',
@@ -199,7 +199,7 @@ export const en = {
       },
       {
         q: 'What is a chat?',
-        a: "A customer your bot handles within a 24-hour window. If they write again within those 24 hours it doesn't count again; after that it's a new chat.",
+        a: "A conversation with a customer that your bot replied to at least once during the month. If that customer writes again in the same month, it doesn't count as another chat.",
       },
       {
         q: 'What happens if I reach the chat limit?',
@@ -221,7 +221,8 @@ export const en = {
     button: 'Request access',
   },
   footer: {
-    tagline: 'AI automations for businesses that live on WhatsApp.',
+    brand: 'Automations',
+    tagline: 'Automations for businesses that live on WhatsApp.',
     columns: [
       {
         title: 'Product',
