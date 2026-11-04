@@ -5,7 +5,7 @@ export const es: Dictionary = {
   meta: {
     title: 'Integramate · Automatizaciones con IA para WhatsApp',
     description:
-      'Activa automatizaciones con IA para WhatsApp, atiende a tus clientes las 24 horas y mira los resultados en un panel simple.',
+      'Activá automatizaciones con IA para WhatsApp, atendé a tus clientes las 24 horas y mirá los resultados en un panel simple.',
   },
   nav: {
     label: 'Principal',
@@ -20,30 +20,30 @@ export const es: Dictionary = {
   },
   hero: {
     badge: 'La mejor forma de usar IA en WhatsApp',
-    titleLine1: 'Atiende a Cada Cliente. Crece',
+    titleLine1: 'Atendé a Cada Cliente. Crecé',
     titleLine2: 'Más Rápido.',
     text: 'Integramate es la forma simple y potente de ejecutar automatizaciones con IA en WhatsApp: responde, capta clientes potenciales y hace seguimiento las 24 horas, para que tu equipo venda mejor y gane más sin el caos.',
     emailLabel: 'Email de trabajo',
-    emailPlaceholder: 'Ingresa tu email de trabajo',
+    emailPlaceholder: 'Ingresá tu email de trabajo',
     submit: 'Solicitar acceso',
     secondary: 'Mostrame cómo respondería mi WhatsApp',
     states: {
       sending: 'Enviando…',
       sent: '¡Gracias! Te respondemos en menos de un día.',
-      invalid_payload: 'Revisa el email e inténtalo de nuevo.',
-      captcha_failed: 'No pudimos confirmar que eres una persona. Inténtalo de nuevo.',
-      over_request_rate_limit: 'Demasiados intentos. Prueba otra vez en un minuto.',
-      error: 'Algo salió mal. Inténtalo de nuevo en un momento.',
+      invalid_payload: 'Revisá el email e intentalo de nuevo.',
+      captcha_failed: 'No pudimos confirmar que sos una persona. Intentalo de nuevo.',
+      over_request_rate_limit: 'Demasiados intentos. Probá otra vez en un minuto.',
+      error: 'Algo salió mal. Intentalo de nuevo en un momento.',
     },
   },
   visuals: {
     chat: {
       contact: 'Laura',
       status: 'en línea',
-      placeholder: 'Escribe un mensaje',
+      placeholder: 'Escribí un mensaje',
       messages: [
         { fromCustomer: true, text: '¡Hola! ¿Abren los sábados?', time: '10:41' },
-        { fromCustomer: false, text: 'Sí, de 9 a 14 h. ¿Quieres reservar un turno?', time: '10:41' },
+        { fromCustomer: false, text: 'Sí, de 9 a 14 h. ¿Querés reservar un turno?', time: '10:41' },
         { fromCustomer: true, text: 'Sí, a las 10 por favor.', time: '10:42' },
         { fromCustomer: false, text: '¡Listo! Te reservé el sábado a las 10.', time: '10:42' },
       ],
@@ -59,18 +59,18 @@ export const es: Dictionary = {
   },
   features: {
     eyebrow: 'Funciones',
-    title: 'Automatiza Mejor y Haz Crecer Tu Negocio',
-    subtitle: 'Todo lo que necesitas para hablar con tus clientes y cerrar ventas más rápido.',
+    title: 'Automatizá Mejor y Hacé Crecer Tu Negocio',
+    subtitle: 'Todo lo que necesitás para hablar con tus clientes y cerrar ventas más rápido.',
     items: [
       {
         visual: 'automations',
         title: 'Automatizaciones listas para usar',
-        text: 'Elige un paquete, como atención al cliente o un asistente interno, responde unas preguntas y actívalo.',
+        text: 'Elegí un paquete, como atención al cliente o un asistente interno, respondé unas preguntas y activalo.',
       },
       {
         visual: 'metrics',
         title: 'Resultados que se entienden',
-        text: 'Mira conversaciones atendidas, contactos captados y horas ahorradas, sin abrir una sola pantalla técnica.',
+        text: 'Mirá conversaciones atendidas, contactos captados y horas ahorradas, sin abrir una sola pantalla técnica.',
       },
       {
         visual: 'chat',
@@ -148,14 +148,14 @@ export const es: Dictionary = {
     title: 'Las Ventajas Para Tu Equipo',
     subtitle: 'Integramate es más que un chatbot: es un sistema completo para responder más rápido y vender más.',
     items: [
-      { icon: 'chart', title: 'Mejores resultados', text: 'Resuelve más conversaciones sin hacer crecer el equipo.' },
-      { icon: 'clock', title: 'Más tiempo libre', text: 'Deja que las automatizaciones atiendan las preguntas repetitivas, de día y de noche.' },
+      { icon: 'chart', title: 'Mejores resultados', text: 'Resolvé más conversaciones sin hacer crecer el equipo.' },
+      { icon: 'clock', title: 'Más tiempo libre', text: 'Dejá que las automatizaciones atiendan las preguntas repetitivas, de día y de noche.' },
       { icon: 'heart', title: 'Clientes más contentos', text: 'Respuestas rápidas y consistentes en el canal que ya usan.' },
     ],
   },
   channels: {
     eyebrow: 'Canales',
-    title: 'Encuentra a Tus Clientes Donde Están',
+    title: 'Encontrá a Tus Clientes Donde Están',
     subtitle: 'WhatsApp está activo hoy. Vienen más canales.',
     live: 'Activo',
     soon: 'Próximamente',
@@ -178,7 +178,7 @@ export const es: Dictionary = {
     items: [
       {
         q: '¿Necesito conocimientos técnicos?',
-        a: 'No. Eliges un paquete, respondes unas preguntas simples sobre tu negocio y lo activas.',
+        a: 'No. Elegís un paquete, respondés unas preguntas simples sobre tu negocio y lo activás.',
       },
       {
         q: '¿Qué canales están disponibles?',
@@ -190,7 +190,7 @@ export const es: Dictionary = {
       },
       {
         q: '¿Cómo obtengo acceso?',
-        a: 'Regístrate con tu email en el formulario y te enviamos el acceso.',
+        a: 'Registrate con tu email en el formulario y te enviamos el acceso.',
       },
       {
         q: '¿Pago dos veces?',
@@ -198,7 +198,7 @@ export const es: Dictionary = {
       },
       {
         q: '¿Qué es un chat?',
-        a: 'Un cliente que escribe y es atendido por tu bot. Todo lo que hablan en 24 horas cuenta como un solo chat.',
+        a: 'Un cliente atendido por tu bot en una ventana de 24 horas. Si vuelve a escribir dentro de esas 24 h no suma; si escribe después, cuenta como un chat nuevo.',
       },
       {
         q: '¿Qué pasa si llego al límite de chats?',
@@ -215,8 +215,8 @@ export const es: Dictionary = {
     ],
   },
   cta: {
-    title: 'Construye Relaciones Más Sólidas Con Tus Clientes',
-    text: 'Súmate a los negocios que atienden a cada cliente, a cualquier hora, sin el caos.',
+    title: 'Construí Relaciones Más Sólidas Con Tus Clientes',
+    text: 'Sumate a los negocios que atienden a cada cliente, a cualquier hora, sin el caos.',
     button: 'Solicitar acceso',
   },
   footer: {
