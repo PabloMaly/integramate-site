@@ -199,11 +199,11 @@ export const en = {
       },
       {
         q: 'What is a chat?',
-        a: "A conversation with a customer that your bot replied to at least once during the month. If that customer writes again in the same month, it doesn't count as another chat.",
+        a: "A conversation your bot replied to at least once during the month. If that customer writes again in the same month, it doesn't count as another chat. Replies from someone on your team, phone messages, and conversations the bot never replied to do not count.",
       },
       {
         q: 'What happens if I reach the chat limit?',
-        a: 'We warn you at 80% and at 100%. If you reach the cap, the bot keeps replying to customers it already handled this month and pauses only for new conversations until next month. You can also add 500 chats.',
+        a: 'We warn you at 80% and at 100%. If you reach the cap, the bot keeps handling the conversations it already counted this month and pauses only for new ones. A person handles those until next month. You can also add blocks of 500 chats for 9.900 ARS (7 USD outside Argentina).',
       },
       {
         q: 'Can I change plans?',

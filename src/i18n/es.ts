@@ -200,11 +200,11 @@ export const es: Dictionary = {
       },
       {
         q: '¿Qué es un chat?',
-        a: 'Una conversación con un cliente que tu bot respondió al menos una vez durante el mes. Si ese cliente vuelve a escribir en el mismo mes, no suma otro chat.',
+        a: 'Una conversación en la que tu bot respondió al menos una vez durante el mes. Si ese cliente vuelve a escribir en el mismo mes, no suma otro chat. No cuentan los mensajes que responde una persona del equipo, los de teléfono ni las conversaciones donde el bot no respondió.',
       },
       {
         q: '¿Qué pasa si llego al límite de chats?',
-        a: 'Te avisamos al 80% y al 100%. Si llegás al tope, el bot sigue atendiendo a los clientes que ya hablaron con vos este mes y se pausa solo para conversaciones nuevas hasta el mes siguiente. También podés sumar 500 chats.',
+        a: 'Te avisamos al 80% y al 100%. Si llegás al tope, el bot sigue atendiendo las conversaciones que ya contó este mes y se pausa solo para las nuevas: esas las atiende una persona, hasta el mes siguiente. También podés sumar bloques de 500 chats por 9.900 ARS (7 USD fuera de Argentina).',
       },
       {
         q: '¿Puedo cambiar de plan?',
