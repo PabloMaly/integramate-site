@@ -204,7 +204,7 @@ export const es: Dictionary = {
       },
       {
         q: '¿Qué pasa si llego al límite de chats?',
-        a: 'Te avisamos al 80% y al 100%. Si llegás al tope, el bot se pausa hasta el mes siguiente, o podés sumar 500 chats con un clic.',
+        a: 'Te avisamos al 80% y al 100%. Si llegás al tope, el bot sigue atendiendo a los clientes que ya hablaron con vos este mes y se pausa solo para conversaciones nuevas hasta el mes siguiente. También podés sumar 500 chats.',
       },
       {
         q: '¿Puedo cambiar de plan?',

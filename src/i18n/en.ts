@@ -203,7 +203,7 @@ export const en = {
       },
       {
         q: 'What happens if I reach the chat limit?',
-        a: 'We warn you at 80% and at 100%. If you hit the cap, the bot pauses until next month, or you can add 500 chats with one click.',
+        a: 'We warn you at 80% and at 100%. If you reach the cap, the bot keeps replying to customers it already handled this month and pauses only for new conversations until next month. You can also add 500 chats.',
       },
       {
         q: 'Can I change plans?',
